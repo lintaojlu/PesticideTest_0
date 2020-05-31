@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PesticideTest_0</string>
+    <string name="title_activity_index">MainActivity</string>
+    <string name="title_home">我的</string>
+    <string name="title_dashboard">检测</string>
+    <string name="title_notifications">模型</string>
+</resources>
