@@ -4,7 +4,7 @@
  * Date        : 2012-01-11 16:00:00
  * Description : Java实现一元线性回归的算法，回归线实现类，(可实现统计指标的预测)
  */
-package com.example.PesticideTest_0;
+package com.example.PesticideTest_0.fitting;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

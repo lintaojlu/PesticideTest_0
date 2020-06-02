@@ -4,7 +4,7 @@
  * Date        : 2012-01-11 16:00:00
  * Description : Java实现一元线性回归的算法，座标点实体类，(可实现统计指标的预测)
  */
-package com.example.PesticideTest_0;
+package com.example.PesticideTest_0.fitting;
 
 public class DataPoint {
 

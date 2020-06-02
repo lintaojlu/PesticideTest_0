@@ -1,6 +1,7 @@
 package com.example.PesticideTest_0.ui.notifications;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.PesticideTest_0.CalculateActivity;
+import com.example.PesticideTest_0.ImageActivity;
+import com.example.PesticideTest_0.NowModelActivity;
 import com.example.PesticideTest_0.R;
 import com.example.PesticideTest_0.SelectActivity;
 
@@ -34,7 +38,8 @@ public class NotificationsFragment extends Fragment {
         bt_nowModel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent =new Intent(getActivity(), NowModelActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -42,12 +47,12 @@ public class NotificationsFragment extends Fragment {
         bt_newModel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(getActivity(), SelectActivity.class);
+                Intent intent = new Intent(getActivity(), SelectActivity.class);
                 startActivity(intent);
             }
         });
 
-                notificationsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        notificationsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
             }
