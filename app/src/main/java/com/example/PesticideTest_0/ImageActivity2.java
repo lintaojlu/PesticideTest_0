@@ -44,7 +44,7 @@ public class ImageActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 Bitmap crop = picture.crop();
                 picture.setImageBitmap(crop);
-                bitmap = crop;
+                bitmap = crop;  
                 double gray = calculategray(bitmap);
                 String grays = String.valueOf(gray);
                 tv_result.setText("灰度值:"+grays);
