@@ -12,37 +12,23 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
-        android:text="拍照检测"
+        android:text="打开相机"
         android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_album"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/bt_album"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="436dp"
         android:text="从相册选择"
         android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_camera" />
-
-    <me.pqpo.smartcropperlib.view.CropImageView
-        android:id="@+id/picture"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_album" />
-
-    <Button
-        android:id="@+id/sure"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="确定"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/picture" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

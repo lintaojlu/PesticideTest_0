@@ -4,13 +4,16 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -18,7 +21,9 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.PesticideTest_0.ImageActivity2;
 import com.example.PesticideTest_0.R;
+import com.example.PesticideTest_0.fitting.RealPathFromUriUtils;
 
 import me.pqpo.smartcropperlib.view.CropImageView;
 
@@ -29,7 +34,6 @@ public class DashboardFragment extends Fragment {
     private DashboardViewModel dashboardViewModel;
     public static final int CHOOSE_CAMERA = 1;
     public static final int CHOOSE_ALBUM = 2;
-    private CropImageView picture;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -66,14 +70,6 @@ public class DashboardFragment extends Fragment {
                 }
             }
         });
-        //确定
-        Button se = (Button) root.findViewById(R.id.sure);//确定按钮，裁剪并计算灰度值
-        se.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
         return root;
     }
 
@@ -87,7 +83,12 @@ public class DashboardFragment extends Fragment {
                     //TODO 返回相机照片
                     break;
                 case CHOOSE_ALBUM:
-                    //TODO 返回相册照片
+                    //返回相册照片
+                    Intent intent_ima =new Intent(getActivity(), ImageActivity2.class);
+                    String image_path = RealPathFromUriUtils.getRealPathFromUri(getActivity(), data.getData());
+                    intent_ima.putExtra("image_path",image_path);
+                    Log.e("my","我在这"+image_path);
+                    startActivity(intent_ima);
             }
         }
     }

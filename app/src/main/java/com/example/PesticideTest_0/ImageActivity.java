@@ -29,6 +29,7 @@ public class ImageActivity extends AppCompatActivity {
 
     public static final int CHOOSE_PHOTO=2;
     private CropImageView picture;
+    private Button se;
     Bitmap bitmap1;
     int color;
     double[] nongdunumber = new double[100];
@@ -123,19 +124,15 @@ public class ImageActivity extends AppCompatActivity {
 
                     }else {
                         String realPathFromUri = RealPathFromUriUtils.getRealPathFromUri(this, data.getData());
-
                         displayImage(realPathFromUri);
-
                         final Bitmap bp = bitmap1;
-                        Button se = (Button) findViewById(R.id.sure);//确定按钮，裁剪并计算灰度值
+                        se = (Button) findViewById(R.id.sure);//确定按钮，裁剪并计算灰度值
 
                         se.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 Bitmap crop = picture.crop();
                                 picture.setImageBitmap(crop);
-
-
                                 bitmap1 = crop;
                                 double gray = calculategray(bitmap1);
                                 String grays = String.valueOf(gray);
@@ -148,9 +145,6 @@ public class ImageActivity extends AppCompatActivity {
                                     grayvalue[m - 1] = gray;
 
                                     m++;}
-
-
-
                             }
                         });
                         Button cancel = (Button) findViewById(R.id.cancel);
@@ -177,39 +171,6 @@ public class ImageActivity extends AppCompatActivity {
         }
     }
 
-
-    /* @TargetApi(19)
-     private void handleImageOnkitkat(Intent data)//获取路径
-     {
-         String imagePath=null;
-         Uri uri=data.getData();
-         if(DocumentsContract.isDocumentUri(this,uri))
-         {
-             String Docid=DocumentsContract.getDocumentId(uri);
-             if("com.android.providers.media.documents".equals(uri.getAuthority())){
-                 String id=Docid.split(":")[1];
-                 String selection=MediaStore.Images.Media._ID+"="+id;
-                 imagePath=getImagePath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,selection);
-             }else if("com.android.prociders.downloads.documents".equals(uri.getAuthority())){
-                 Uri contenturi= ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"),Long.valueOf(Docid));
-                 imagePath=getImagePath(contenturi,null);
-             }else if("content".equalsIgnoreCase(uri.getScheme())){
-                 imagePath=getImagePath(uri,null);
-             }else if("file".equalsIgnoreCase(uri.getScheme()))
-             {
-                 imagePath=uri.getPath();
-             }
-
-         }
-         displayImage(imagePath);
-     }
-
-     private void handleimagebeforekitcat(Intent data)
-     {
-         Uri uri=data.getData();
-         String imagepath=getImagePath(uri,null);
-         displayImage(imagepath);
-     }*/
     private String getImagePath(Uri uri,String selection)
     {
         String path =null;
@@ -228,22 +189,8 @@ public class ImageActivity extends AppCompatActivity {
         if(imagePath!=null)
         {
             final Bitmap bitmap=BitmapFactory.decodeFile(imagePath);
-
-
             picture.setImageToCrop(bitmap);//设置待裁剪图片
             bitmap1=bitmap;
-
-            /*point=SmartCropper.scan(bitmap);
-            double gray2=point[0].x;
-            double gray1 = point[0].y;
-            String grays1 = String.valueOf(gray1);
-            String grays2 = String.valueOf(gray2);
-            TextView grayv1 = (TextView) findViewById(R.id.cs);
-            grayv1.setText(grays2+","+grays1);*/
-
-
-
-
         }else{
             Toast.makeText(this,"未打开指定图片，请再试",Toast.LENGTH_LONG).show();
         }

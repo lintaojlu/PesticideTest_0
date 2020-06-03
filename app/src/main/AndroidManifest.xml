@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NowModelActivity"></activity>
+        <activity android:name=".ImageActivity2"></activity>
+        <activity android:name=".NowModelActivity" />
         <activity
             android:name=".IndexActivity"
             android:label="@string/title_activity_index">
