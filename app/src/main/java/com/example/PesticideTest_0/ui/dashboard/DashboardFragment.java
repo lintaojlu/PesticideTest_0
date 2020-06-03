@@ -87,7 +87,6 @@ public class DashboardFragment extends Fragment {
                     Intent intent_ima =new Intent(getActivity(), ImageActivity2.class);
                     String image_path = RealPathFromUriUtils.getRealPathFromUri(getActivity(), data.getData());
                     intent_ima.putExtra("image_path",image_path);
-                    Log.e("my","我在这"+image_path);
                     startActivity(intent_ima);
             }
         }

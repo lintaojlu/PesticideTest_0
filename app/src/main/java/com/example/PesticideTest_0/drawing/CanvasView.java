@@ -20,7 +20,7 @@ public class CanvasView extends View {
     private Paint mRedPaint;//红色画笔
     private Point mWinSize;//屏幕尺寸
     private Point mCoo;//坐标系原点
-    public static float canvas_k = (float) -2.293,canvas_b= (float) 47.956;
+    private static float canvas_k = (float) -2.293,canvas_b= (float) 47.956,boundary=(float)5;
     public CanvasView(Context context) {
         this(context, null);
 
@@ -66,9 +66,12 @@ public class CanvasView extends View {
     public static float getK(){
         return canvas_k;
     }
-
     public static float getB(){
         return canvas_b;
     }
-
+    public static float getBoundary(){
+        return boundary;
+    }
+    public static void changeK(float k){canvas_k=k;}
+    public static void changeB(float b){canvas_b=b;}
 }

@@ -8,10 +8,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="16dp"
         android:id="@+id/text"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         />
     <com.example.PesticideTest_0.drawing.CanvasView
         android:id="@+id/canvasView"

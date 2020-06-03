@@ -15,22 +15,18 @@
         android:gravity="center_horizontal"
         android:id="@+id/grayvalue"
         android:text="此处为图片所选灰度值"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:id="@+id/cs"
-        android:text="ceshi"/>
 
     <me.pqpo.smartcropperlib.view.CropImageView
         android:id="@+id/picture"
         android:layout_width="match_parent"
         android:layout_height="400dp" />
+
     <Button
+        android:id="@+id/sure"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:id="@+id/sure"
-        android:text="确定"/>
+        android:text="确定" />
+
     <Button
         android:layout_width="100dp"
         android:layout_height="50dp"

@@ -49,14 +49,12 @@ public class CalculateActivity extends AppCompatActivity {
                 "\nSum xx = " + line.getSumXX() +
                 "\nSum xy = " + line.getSumXY() +
                 "\nSum yy = " + line.getSumYY() +
-                "\n拟合函数:  y = " + s + "x + "
-                + s1);
+                "\n拟合函数:  y = " + s + "x + " + s1);
 
         cal_k = Float.parseFloat(s);
         cal_b = Float.parseFloat(s1);
-        CanvasView.canvas_k = cal_k;
-        CanvasView.canvas_b = cal_b;
-
+        CanvasView.changeK(cal_k);
+        CanvasView.changeB(cal_b);
     }
 
     /**
