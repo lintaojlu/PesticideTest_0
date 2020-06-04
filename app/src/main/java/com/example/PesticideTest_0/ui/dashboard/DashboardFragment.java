@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,6 +27,9 @@ import com.example.PesticideTest_0.ImageActivity2;
 import com.example.PesticideTest_0.R;
 import com.example.PesticideTest_0.fitting.RealPathFromUriUtils;
 
+import java.io.File;
+import java.io.IOException;
+
 import me.pqpo.smartcropperlib.view.CropImageView;
 
 import static android.app.Activity.RESULT_OK;
@@ -34,6 +39,7 @@ public class DashboardFragment extends Fragment {
     private DashboardViewModel dashboardViewModel;
     public static final int CHOOSE_CAMERA = 1;
     public static final int CHOOSE_ALBUM = 2;
+    private File currentImageFile = null;    //定义一个保存图片的File变量
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -43,11 +49,24 @@ public class DashboardFragment extends Fragment {
         //拍照检测
         Button bt_camera = root.findViewById(R.id.bt_camera);
         bt_camera.setOnClickListener(new View.OnClickListener() {
+            //在按钮点击事件处写上这些东西，这些是在SD卡创建图片文件的:
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(it, CHOOSE_CAMERA);
+                File dir = new File(Environment.getExternalStorageDirectory(),"pictures");
+                if(dir.exists()){
+                    dir.mkdirs();
+                }
+                currentImageFile = new File(dir,System.currentTimeMillis() + ".jpg");
+                if(!currentImageFile.exists()){
+                    try {
+                        currentImageFile.createNewFile();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
 
+                Intent it = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                it.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(currentImageFile));//图片保存到sd卡
             }
         });
         //从相册选择
@@ -77,16 +96,20 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Intent intent_ima = new Intent(getActivity(), ImageActivity2.class);
+        String image_path;
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case CHOOSE_CAMERA:
-                    //TODO 返回相机照片
+                    //返回相机照片
+                    image_path = RealPathFromUriUtils.getRealPathFromUri(getActivity(), Uri.fromFile(currentImageFile));
+                    intent_ima.putExtra("image_path",image_path );//将图片路径传给下一个activity
+                    startActivity(intent_ima);
                     break;
                 case CHOOSE_ALBUM:
                     //返回相册照片
-                    Intent intent_ima =new Intent(getActivity(), ImageActivity2.class);
-                    String image_path = RealPathFromUriUtils.getRealPathFromUri(getActivity(), data.getData());
-                    intent_ima.putExtra("image_path",image_path);
+                    image_path = RealPathFromUriUtils.getRealPathFromUri(getActivity(), data.getData());
+                    intent_ima.putExtra("image_path", image_path);//将图片路径传给下一个activity
                     startActivity(intent_ima);
             }
         }

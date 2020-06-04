@@ -20,7 +20,7 @@ public class CanvasView extends View {
     private Paint mRedPaint;//红色画笔
     private Point mWinSize;//屏幕尺寸
     private Point mCoo;//坐标系原点
-    private static float canvas_k = (float) -2.293,canvas_b= (float) 47.956,boundary=(float)5;
+    private static float canvas_k = (float) -2.95,canvas_b= (float) 81.75,boundary=(float)5;
     public CanvasView(Context context) {
         this(context, null);
 
@@ -35,7 +35,7 @@ public class CanvasView extends View {
     //TODO init 初始化:release：
         //准备屏幕尺寸
         mWinSize = new Point();
-        mCoo = new Point(50, 600);
+        mCoo = new Point(50, 850);
         Utils.loadWinSize(getContext(), mWinSize);
         mGridPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mRedPaint = new Paint();

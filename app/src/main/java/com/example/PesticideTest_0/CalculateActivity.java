@@ -2,8 +2,10 @@ package com.example.PesticideTest_0;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Arrays;
@@ -23,6 +25,11 @@ public class CalculateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculate);
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
         nongdux = b.getDoubleArray("nongdu");//接受浓度
@@ -82,6 +89,15 @@ public class CalculateActivity extends AppCompatActivity {
                 + line.getA0());
         System.out.println("误差：     R^2 = " + line.getR());
     }
-
+    //标题栏返回键
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish(); // back button
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
 

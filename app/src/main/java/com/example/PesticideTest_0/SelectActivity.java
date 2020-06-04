@@ -1,9 +1,11 @@
 package com.example.PesticideTest_0;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +22,11 @@ public class SelectActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select);
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
         final EditText numberselect=(EditText)findViewById(R.id.samplenumber);//样本数量编辑框
         Button ensurenum=(Button)findViewById(R.id.ensurenumber);//确认样本数量按钮
         ensurenum.setOnClickListener(new View.OnClickListener() {
@@ -95,5 +102,14 @@ public class SelectActivity extends AppCompatActivity {
         String reg = "^[0-9]+(.[0-9]+)?$";
         return str.matches(reg);
     }
-
+    //标题栏返回键
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish(); // back button
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

@@ -73,11 +73,18 @@ public class HelpDraw {
     private static void drawText4Coo(Canvas canvas, Point coo, Point winSize, Paint paint) {
         //绘制文字
         paint.setTextSize(50);
-        canvas.drawText("浓度(mg/L)", coo.x+200, coo.y + 100, paint);
-        canvas.drawText("灰度", coo.x + 60, coo.y- 500, paint);
+        canvas.drawText("浓度(mg/L)", coo.x+500, coo.y + 100, paint);
+        canvas.drawText("灰度", coo.x + 60, coo.y-800, paint);
         paint.setTextSize(25);
+        //绘制分界限
+        paint.setColor(Color.BLUE);
+        paint.setStrokeWidth(2);
+        canvas.drawText("浓度标准",coo.x+50*CanvasView.getBoundary(),coo.y+100,paint);
+        paint.setStrokeWidth(5);
+        canvas.drawLine(coo.x+50*CanvasView.getBoundary(),coo.y+100,coo.x+50*CanvasView.getBoundary(),coo.y-17*50,paint);
+        paint.setColor(Color.BLACK);
         //X正轴文字
-        for (int i = 1; i < 11; i++) {
+        for (int i = 1; i < 15; i++) {
             paint.setStrokeWidth(2);
             canvas.drawText(2 * i + "", coo.x - 20 + 50 * i, coo.y + 40, paint);
             paint.setStrokeWidth(5);
@@ -92,13 +99,13 @@ public class HelpDraw {
         }
         //y正轴文字
         for (int i = 1; i < (winSize.y - coo.y) / 50; i++) {
-            paint.setStrokeWidth(2);
+//            paint.setStrokeWidth(2);
 //            canvas.drawText(-10 * i + "", coo.x + 20, coo.y + 10 + 100 * i, paint);
             paint.setStrokeWidth(5);
             canvas.drawLine(coo.x, coo.y + 100 * i, coo.x + 10, coo.y + 100 * i, paint);
         }
         //y负轴文字
-        for (int i = 1; i < 12; i++) {
+        for (int i = 1; i < 17; i++) {
             paint.setStrokeWidth(2);
             canvas.drawText(5 * i + "", coo.x + 20, coo.y + 10 - 50 * i, paint);
             paint.setStrokeWidth(5);
