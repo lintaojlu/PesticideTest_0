@@ -23,6 +23,17 @@
                 <category android:name="android.intent.category.LAUNCH" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.PesticideTest_0.file_provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
         <activity android:name=".CalculateActivity" />
         <activity android:name=".SelectActivity" />
         <activity android:name=".ImageActivity" />

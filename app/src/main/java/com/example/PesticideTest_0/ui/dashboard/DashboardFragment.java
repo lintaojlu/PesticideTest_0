@@ -20,6 +20,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -40,6 +41,7 @@ public class DashboardFragment extends Fragment {
     public static final int CHOOSE_CAMERA = 1;
     public static final int CHOOSE_ALBUM = 2;
     private File currentImageFile = null;    //定义一个保存图片的File变量
+    private Uri photoUri = null;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -52,10 +54,12 @@ public class DashboardFragment extends Fragment {
             //在按钮点击事件处写上这些东西，这些是在SD卡创建图片文件的:
             @Override
             public void onClick(View v) {
+                //创建图片路径
                 File dir = new File(Environment.getExternalStorageDirectory(),"pictures");
                 if(dir.exists()){
                     dir.mkdirs();
                 }
+                //创建图片文件
                 currentImageFile = new File(dir,System.currentTimeMillis() + ".jpg");
                 if(!currentImageFile.exists()){
                     try {
@@ -66,7 +70,13 @@ public class DashboardFragment extends Fragment {
                 }
 
                 Intent it = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                it.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(currentImageFile));//图片保存到sd卡
+                //图片要使用provider
+                photoUri = FileProvider.getUriForFile(
+                        getActivity(),
+                        "com.example.PesticideTest_0.file_provider",
+                        currentImageFile);
+                it.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);//图片保存到sd卡
+                startActivityForResult(it, CHOOSE_CAMERA);
             }
         });
         //从相册选择
