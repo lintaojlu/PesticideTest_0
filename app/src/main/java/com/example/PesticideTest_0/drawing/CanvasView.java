@@ -74,4 +74,5 @@ public class CanvasView extends View {
     }
     public static void changeK(float k){canvas_k=k;}
     public static void changeB(float b){canvas_b=b;}
+    public static void changeBoundary(float b){ boundary=b;}
 }

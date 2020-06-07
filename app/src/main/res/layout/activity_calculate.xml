@@ -14,13 +14,48 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         />
+
     <com.example.PesticideTest_0.drawing.CanvasView
         android:id="@+id/canvasView"
         android:layout_width="400dp"
         android:layout_height="480dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text" />
+
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:hint="请输入农药标准浓度(mg/L)"
+        android:textSize="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/canvasView" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="请输入模型名字"
+        android:textSize="16dp"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/canvasView" />
+
+    <Button
+        android:id="@+id/bt_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="保存到云端"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

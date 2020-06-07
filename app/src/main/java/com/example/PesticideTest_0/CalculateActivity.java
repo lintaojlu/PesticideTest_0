@@ -1,8 +1,14 @@
 package com.example.PesticideTest_0;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
@@ -10,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Arrays;
 
+import com.example.PesticideTest_0.controller.NetController;
 import com.example.PesticideTest_0.drawing.CanvasView;
 import com.example.PesticideTest_0.fitting.Arithmetic;
 import com.example.PesticideTest_0.fitting.DataPoint;
@@ -26,7 +33,7 @@ public class CalculateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculate);
         ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null){
+        if (actionBar != null) {
             actionBar.setHomeButtonEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
@@ -50,18 +57,38 @@ public class CalculateActivity extends AppCompatActivity {
         String s = String.valueOf(line.getA1());
         String s1 = String.valueOf(line.getA0());
         TextView tv4 = (TextView) findViewById(R.id.text);
-        tv4.setText("数据点个数 n = " + line.getDataPointCount() +
-                "\nSum x  = " + line.getSumX() +
-                "\nSum y  = " + line.getSumY() +
-                "\nSum xx = " + line.getSumXX() +
-                "\nSum xy = " + line.getSumXY() +
-                "\nSum yy = " + line.getSumYY() +
-                "\n拟合函数:  y = " + s + "x + " + s1);
+        tv4.setText("数据点个数=" + line.getDataPointCount() +
+                ",误差:R^2=" + line.getR() +
+                "\n拟合函数:y=" + s + "x+" + s1);
 
         cal_k = Float.parseFloat(s);
         cal_b = Float.parseFloat(s1);
         CanvasView.changeK(cal_k);
         CanvasView.changeB(cal_b);
+
+        SharedPreferences sp = CalculateActivity.this.getSharedPreferences("user", Context.MODE_PRIVATE);
+        final String username = sp.getString("username", null);
+        final EditText editText = findViewById(R.id.editText);
+        final EditText editText1 = findViewById(R.id.editText1);
+        Button bt_save = findViewById(R.id.bt_save);
+        bt_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String boundary_str = editText1.getText().toString();
+                CanvasView.changeBoundary(Float.parseFloat(boundary_str));
+                String cmd_str = "cmd=4" +
+                        "&userName=" + username +
+                        "&modelName=" + editText.getText() +
+                        "&modelSlope=" + CanvasView.getK() +
+                        "&modelIntercept=" + CanvasView.getB() +
+                        "&modelBoundary=" + boundary_str;
+                NetController netController = new NetController(CalculateActivity.this);
+                netController.send(cmd_str);
+                //Complete and destroy activity once successful
+                setResult(Activity.RESULT_OK);
+                finish();
+            }
+        });
     }
 
     /**
@@ -89,6 +116,7 @@ public class CalculateActivity extends AppCompatActivity {
                 + line.getA0());
         System.out.println("误差：     R^2 = " + line.getR());
     }
+
     //标题栏返回键
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
