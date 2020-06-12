@@ -11,24 +11,26 @@
         android:id="@+id/bt_camera"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="100dp"
         android:text="打开相机"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/bt_album"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/button_shape"/>
 
     <Button
         android:id="@+id/bt_album"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="436dp"
+        android:layout_marginBottom="300dp"
         android:text="从相册选择"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/button_shape"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

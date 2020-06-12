@@ -6,36 +6,62 @@
     >
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:id="@+id/samplenumber"
-        android:hint="请输入建模样品的数量"/>
+        android:hint="请输入建模样品的数量"
+        android:background="@drawable/edittext_shape"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="10dp"/>
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:id="@+id/ensurenumber"
-        android:text="确定数量"/>
+        android:text="确定数量"
+        android:background="@drawable/button_shape" android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="40dp"/>
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:id="@+id/nongdu"
-        android:hint="请输入每个样品的浓度（一次输一个）"/>
+        android:hint="请输入每个样品的浓度（一次输一个）"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/edittext_shape"/>
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:id="@+id/ensurenongdu"
-        android:text="确定浓度"/>
+        android:text="确定浓度"
+        android:background="@drawable/button_shape"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="40dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="100px"
         android:gravity="center_horizontal"
         android:id="@+id/numberhint"
-        android:text="0"/>
+        android:text="0" android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="10dp"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/gotocamera"
         android:background="#FFFFE0"
-        android:text="采集各个样品灰度值"/>
+        android:text="采集各个样品灰度值"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="64dp"/>
 
 </LinearLayout>
