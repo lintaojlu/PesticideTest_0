@@ -61,11 +61,12 @@ public class CalculateActivity extends AppCompatActivity {
                 ",误差:R^2=" + line.getR() +
                 "\n拟合函数:y=" + s + "x+" + s1);
 
+        //change模型kb值
         cal_k = Float.parseFloat(s);
         cal_b = Float.parseFloat(s1);
         CanvasView.changeK(cal_k);
         CanvasView.changeB(cal_b);
-
+        //保存模型到云端
         SharedPreferences sp = CalculateActivity.this.getSharedPreferences("user", Context.MODE_PRIVATE);
         final String username = sp.getString("username", null);
         final EditText editText = findViewById(R.id.editText);

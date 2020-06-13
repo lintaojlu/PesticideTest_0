@@ -22,7 +22,7 @@ public class HomeFragment extends Fragment {
 
 //    private SharedPreferences sp;
     private static int LOGIN_REGISTER =3,CPW=4,INPUT_MODEL;
-    private Button bt_sign,bt_cpw,bt_input_model;
+    private Button bt_cpw,bt_input_model;
     private HomeViewModel homeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -47,14 +47,6 @@ public class HomeFragment extends Fragment {
 //        SharedPreferences.Editor editor = sp.edit();
 //        editor.putString("test_name","LinTao");
 //        editor.commit();
-        bt_sign= root.findViewById(R.id.bt_sign);
-        bt_sign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivityForResult(intent, LOGIN_REGISTER);
-            }
-        });
         bt_cpw= root.findViewById(R.id.bt_cpw);
         bt_cpw.setOnClickListener(new View.OnClickListener() {
             @Override

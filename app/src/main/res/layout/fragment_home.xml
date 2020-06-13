@@ -7,43 +7,28 @@
     tools:context=".ui.home.HomeFragment">
 
     <Button
-        android:id="@+id/bt_sign"
+        android:id="@+id/bt_cpw"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:text="登陆/注册"
+        android:text="修改密码"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/bt_cpw"
+        app:layout_constraintBottom_toTopOf="@+id/bt_input_model"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/button_shape"/>
 
+
     <Button
         android:id="@+id/bt_input_model"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="导入模型"
-        android:textSize="20dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_cpw"
-        app:layout_constraintVertical_bias="1.0"
-        android:background="@drawable/button_shape"/>
-
-    <Button
-        android:id="@+id/bt_cpw"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:layout_marginBottom="436dp"
-        android:text="修改密码"
         android:textSize="20dp"
+        android:text="导入模型"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

@@ -5,16 +5,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-
+import android.widget.TextView;
 import androidx.core.app.ActivityCompat;
-
+import com.example.PesticideTest_0.R;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -70,20 +69,23 @@ public class ShareUtil extends Activity {
         view.buildDrawingCache();
 
         //获取状态栏高度
-        Rect rect = new Rect();
-        view.getWindowVisibleDisplayFrame(rect);
-        int statusBarHeights = rect.top;
+        //Rect rect = new Rect();
+        //view.getWindowVisibleDisplayFrame(rect);
+        //int statusBarHeights = rect.top;
 
-        WindowManager windowManager = activity.getWindowManager();
+        //获取控件TextView的高度
+        TextView textView=activity.findViewById(R.id.tv_result);
+        int textHeight=textView.getHeight();
+
         //获取屏幕宽和高
+        WindowManager windowManager = activity.getWindowManager();
         DisplayMetrics outMetrics = new DisplayMetrics();
         windowManager.getDefaultDisplay().getMetrics(outMetrics);
         int width = outMetrics.widthPixels;
         int height = outMetrics.heightPixels;
 
         //去掉状态栏
-        Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache(), 0, statusBarHeights, width, height - statusBarHeights);
-
+        Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache(), 0, textHeight-20, width, 1400);
         //销毁缓存信息
         view.destroyDrawingCache();
         view.setDrawingCacheEnabled(false);
@@ -114,7 +116,7 @@ public class ShareUtil extends Activity {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.setFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
             Intent chooser = Intent.createChooser(intent, "分享截图");
-                context.startActivity(chooser);
+            context.startActivity(chooser);
 
         } else {
             Log.e("ShareImage", "截图失败");
