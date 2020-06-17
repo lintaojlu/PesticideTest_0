@@ -16,13 +16,14 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.PesticideTest_0.CPWActivity;
 import com.example.PesticideTest_0.InputModelActivity;
 import com.example.PesticideTest_0.R;
+import com.example.PesticideTest_0.signout.Signout;
 import com.example.PesticideTest_0.ui.login.LoginActivity;
 
 public class HomeFragment extends Fragment {
 
 //    private SharedPreferences sp;
     private static int LOGIN_REGISTER =3,CPW=4,INPUT_MODEL;
-    private Button bt_cpw,bt_input_model;
+    private Button bt_cpw,bt_input_model,bt_signout;
     private HomeViewModel homeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -61,6 +62,16 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), InputModelActivity.class);
                 startActivityForResult(intent, INPUT_MODEL);
+            }
+        });
+        //退出
+        bt_signout=root.findViewById(R.id.bt_signout);
+        bt_signout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Signout.finishAllActivity();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
             }
         });
         return root;

@@ -1,11 +1,13 @@
 package com.example.PesticideTest_0;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +23,11 @@ public class InputModelActivity extends AppCompatActivity {
         setContentView(R.layout.activity_input_model);
         final EditText model_name = findViewById(R.id.model_name);
         Button bt_sure = findViewById(R.id.bt_sure);
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         NetController controller = new NetController(InputModelActivity.this);
         final SharedPreferences sp = InputModelActivity.this.getSharedPreferences("user", Context.MODE_PRIVATE);
@@ -56,5 +63,15 @@ public class InputModelActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    //标题栏返回键
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish(); // back button
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

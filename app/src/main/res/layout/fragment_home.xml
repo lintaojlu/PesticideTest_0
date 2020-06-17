@@ -21,6 +21,19 @@
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/button_shape"/>
 
+    <Button
+        android:id="@+id/bt_signout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/button_shape"
+        android:text="退出登录"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_input_model" />
 
     <Button
         android:id="@+id/bt_input_model"
