@@ -141,6 +141,9 @@ public class ImageActivity extends AppCompatActivity {
                                 Bitmap crop = picture.crop();
                                 picture.setImageBitmap(crop);
                                 bitmap1 = crop;
+                                //得到采样位置
+                                Point p[] = picture.getCropPoints();
+
                                 double gray = calculategray(bitmap1);
                                 String grays = String.valueOf(gray);
                                 TextView grayv = (TextView) findViewById(R.id.grayvalue);

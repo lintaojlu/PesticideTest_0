@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.PesticideTest_0.R;
+import com.example.PesticideTest_0.signout.Signout;
 import com.example.PesticideTest_0.ui.login.LoginViewModel;
 import com.example.PesticideTest_0.ui.login.LoginViewModelFactory;
 
@@ -33,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //添加到activity列表
+        Signout.addActivity(this);
         setContentView(R.layout.activity_login);
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);

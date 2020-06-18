@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.PesticideTest_0.AboutActivity;
 import com.example.PesticideTest_0.CPWActivity;
 import com.example.PesticideTest_0.InputModelActivity;
 import com.example.PesticideTest_0.R;
@@ -22,8 +23,8 @@ import com.example.PesticideTest_0.ui.login.LoginActivity;
 public class HomeFragment extends Fragment {
 
 //    private SharedPreferences sp;
-    private static int LOGIN_REGISTER =3,CPW=4,INPUT_MODEL;
-    private Button bt_cpw,bt_input_model,bt_signout;
+    private static int LOGIN_REGISTER =3,CPW=4;
+    private Button bt_cpw, bt_about,bt_signout;
     private HomeViewModel homeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -36,18 +37,7 @@ public class HomeFragment extends Fragment {
             public void onChanged(@Nullable String s) {
             }
         });
-//        //SharedPreferences test
-//        sp = getContext().getSharedPreferences("myConfig", Context.MODE_PRIVATE);
-//        String string = sp.getString("test_name",null);
-//        if(string.equals(null)){
-//            Log.e("testerror","testerror");
-//        }
-//        else{
-//            Log.e("testsuccess","testsuccess");
-//        }
-//        SharedPreferences.Editor editor = sp.edit();
-//        editor.putString("test_name","LinTao");
-//        editor.commit();
+        //修改密码
         bt_cpw= root.findViewById(R.id.bt_cpw);
         bt_cpw.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,12 +46,13 @@ public class HomeFragment extends Fragment {
                 startActivityForResult(intent, CPW);
             }
         });
-        bt_input_model= root.findViewById(R.id.bt_input_model);
-        bt_input_model.setOnClickListener(new View.OnClickListener() {
+        //关于我们
+        bt_about = root.findViewById(R.id.bt_about);
+        bt_about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), InputModelActivity.class);
-                startActivityForResult(intent, INPUT_MODEL);
+                Intent intent = new Intent(getActivity(), AboutActivity.class);
+                startActivity(intent);
             }
         });
         //退出
@@ -81,5 +72,11 @@ public class HomeFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+    }
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //添加到activity列表
+        Signout.addActivity(getActivity());
     }
 }
