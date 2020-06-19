@@ -53,32 +53,33 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //获取相机权限
-                if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),Manifest.permission.CAMERA)){
-                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA},0);
-                }
-                //创建图片路径
-                File dir = new File(Environment.getExternalStorageDirectory(),"pictures");
-                if(dir.exists()){
-                    dir.mkdirs();
-                }
-                //创建图片文件
-                currentImageFile = new File(dir,System.currentTimeMillis() + ".jpg");
-                if(!currentImageFile.exists()){
-                    try {
-                        currentImageFile.createNewFile();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, 0);
+                } else {
+                    //创建图片路径
+                    File dir = new File(Environment.getExternalStorageDirectory(), "pictures");
+                    if (dir.exists()) {
+                        dir.mkdirs();
                     }
-                }
+                    //创建图片文件
+                    currentImageFile = new File(dir, System.currentTimeMillis() + ".jpg");
+                    if (!currentImageFile.exists()) {
+                        try {
+                            currentImageFile.createNewFile();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
 
-                Intent it = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                //图片要使用provider
-                photoUri = FileProvider.getUriForFile(
-                        getActivity(),
-                        "com.example.PesticideTest_0.file_provider",
-                        currentImageFile);
-                it.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);//图片保存到sd卡
-                startActivityForResult(it, CHOOSE_CAMERA);
+                    Intent it = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    //图片要使用provider
+                    photoUri = FileProvider.getUriForFile(
+                            getActivity(),
+                            "com.example.PesticideTest_0.file_provider",
+                            currentImageFile);
+                    it.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);//图片保存到sd卡
+                    startActivityForResult(it, CHOOSE_CAMERA);
+                }
             }
         });
         //从相册选择
@@ -115,7 +116,7 @@ public class DashboardFragment extends Fragment {
                 case CHOOSE_CAMERA:
                     //返回相机照片
                     image_path = RealPathFromUriUtils.getRealPathFromUri(getActivity(), Uri.fromFile(currentImageFile));
-                    intent_ima.putExtra("image_path",image_path );//将图片路径传给下一个activity
+                    intent_ima.putExtra("image_path", image_path);//将图片路径传给下一个activity
                     startActivity(intent_ima);
                     break;
                 case CHOOSE_ALBUM:

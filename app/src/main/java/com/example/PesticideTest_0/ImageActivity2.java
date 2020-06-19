@@ -72,10 +72,13 @@ public class ImageActivity2 extends AppCompatActivity {
                 String grays = String.valueOf(gray);
                 float y = Float.parseFloat(grays);
                 float x = (y-CanvasView.getB())/CanvasView.getK();
+                if(x<0){
+                    x=0;
+                }
                 tv_result.setText("灰度="+grays+
                         "\n根据拟合函数:灰度="+CanvasView.getK()+"浓度+"+CanvasView.getB()+
-                        "\n计算得农药浓度="+x+"mg/L"+
-                        "\n农药浓度标准="+CanvasView.getBoundary()+"mg/L");
+                        "\n农药浓度标准="+CanvasView.getBoundary()+"mg/L"+
+                        "\n计算得农药浓度="+x+"mg/L");
                 if(x>=CanvasView.getBoundary()){
                     tv_green.setText("");
                     tv_red.setText("!农药超标!");
@@ -84,6 +87,7 @@ public class ImageActivity2 extends AppCompatActivity {
                     tv_red.setText("");
                     tv_green.setText("农药含量符合标准");
                 }
+
             }
         });
         //分享按钮
