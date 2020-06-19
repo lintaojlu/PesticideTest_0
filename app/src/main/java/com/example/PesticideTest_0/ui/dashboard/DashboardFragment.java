@@ -45,8 +45,6 @@ public class DashboardFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                ViewModelProviders.of(this).get(DashboardViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
         //拍照检测
         Button bt_camera = root.findViewById(R.id.bt_camera);
@@ -54,6 +52,10 @@ public class DashboardFragment extends Fragment {
             //在按钮点击事件处写上这些东西，这些是在SD卡创建图片文件的:
             @Override
             public void onClick(View v) {
+                //获取相机权限
+                if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),Manifest.permission.CAMERA)){
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA},0);
+                }
                 //创建图片路径
                 File dir = new File(Environment.getExternalStorageDirectory(),"pictures");
                 if(dir.exists()){
