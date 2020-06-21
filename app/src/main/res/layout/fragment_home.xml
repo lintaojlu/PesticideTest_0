@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.home.HomeFragment"
+    android:paddingTop="20dp">
 
     <ImageView
         android:id="@+id/main_icon"
@@ -12,7 +13,6 @@
         android:layout_height="60dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp"
         android:background="@drawable/ic_main"
         />
@@ -23,8 +23,8 @@
         android:text="userID:09212343"
         app:layout_constraintLeft_toRightOf="@id/main_icon"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="40dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:paddingLeft="2dp"
         />
     <TextView
