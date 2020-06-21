@@ -79,9 +79,9 @@ public class HelpDraw {
         //绘制分界限
         paint.setColor(Color.BLUE);
         paint.setStrokeWidth(2);
-        canvas.drawText("浓度标准",coo.x+50*CanvasView.getBoundary(),coo.y+100,paint);
+        canvas.drawText("浓度标准",coo.x+25*CanvasView.getBoundary(),coo.y+100,paint);
         paint.setStrokeWidth(5);
-        canvas.drawLine(coo.x+50*CanvasView.getBoundary(),coo.y+100,coo.x+50*CanvasView.getBoundary(),coo.y-17*50,paint);
+        canvas.drawLine(coo.x+25*CanvasView.getBoundary(),coo.y+100,coo.x+25*CanvasView.getBoundary(),coo.y-17*50,paint);
         paint.setColor(Color.BLACK);
         //X正轴文字
         for (int i = 1; i < 15; i++) {

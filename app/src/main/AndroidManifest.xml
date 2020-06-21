@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".ShowModelActivity"></activity>
+        <activity android:name=".AboutActivity" />
         <activity android:name=".InputModelActivity" />
         <activity android:name=".CPWActivity" />
         <activity android:name=".ui.login.LoginActivity">
