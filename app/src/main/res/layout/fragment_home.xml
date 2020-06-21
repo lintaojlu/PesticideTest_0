@@ -56,10 +56,11 @@
         android:id="@+id/horizontalLine01"
         android:layout_width="0dp"
         android:layout_height="2dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="60dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="#898989"
+        app:layout_constraintTop_toBottomOf="@id/horizontalLine"
         app:layout_constraintBottom_toTopOf="@id/bt_show_models"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -69,7 +70,6 @@
         android:id="@+id/bt_show_models"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="30dp"
         android:gravity="left|center_vertical"
         android:paddingLeft="35dp"
         android:text="查看模型"
@@ -78,7 +78,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/horizontalLine" />
+        app:layout_constraintTop_toBottomOf="@id/horizontalLine01"/>
 
     <TextView
         android:id="@+id/horizontalLine02"
